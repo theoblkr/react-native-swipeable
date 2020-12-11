@@ -174,7 +174,7 @@ export default class Swipeable extends PureComponent {
     onPanAnimatedValueRef(this.state.pan);
   }
 
-  componentWillUnmount() {
+  UNSAFE_componentWillUnmount() {
     this._unmounted = true;
   }
 
@@ -205,7 +205,7 @@ export default class Swipeable extends PureComponent {
   _handlePan = Animated.event([null, {
     dx: this.state.pan.x,
     dy: this.state.pan.y,
-  }], {useNativeDriver: false});
+  }], {useNativeDriver: true});
 
   _handleMoveShouldSetPanResponder = (event, gestureState) => (
     Math.abs(gestureState.dx) > this.props.swipeStartMinDistance
